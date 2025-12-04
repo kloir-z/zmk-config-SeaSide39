@@ -1,21 +1,16 @@
 manifest:
   remotes:
-    - name: zmkfirmware
-      url-base: https://github.com/zmkfirmware
-    - name: inorichi
-      url-base: https://github.com/inorichi
-    - name: caksoylar
-      url-base: https://github.com/caksoylar
+    # - name: zmkfirmware
+    #   url-base: https://github.com/zmkfirmware
+    - name: kloir-z
+      url-base: https://github.com/kloir-z
   projects:
     - name: zmk
-      remote: zmkfirmware
+      remote: kloir-z
       revision: main
       import: app/west.yml
     - name: zmk-pmw3610-driver
-      remote: inorichi
-      revision: main
-    - name: zmk-rgbled-widget
-      remote: caksoylar
-      revision: main
+      remote: kloir-z
+      revision: scroll-acceleration-feature
   self:
     path: config
