@@ -16,6 +16,8 @@ manifest:
       revision: scroll-acceleration-feature
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      # main は 2026-02 の互換シム削除で古い zmk フォークと非互換になったため、
+      # 最後にビルドが通っていた時点のリビジョンに固定
+      revision: a3510c9de46de8b42c803286f4978466c6ea3916
   self:
     path: config
