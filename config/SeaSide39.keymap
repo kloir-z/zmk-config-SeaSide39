@@ -86,6 +86,14 @@
             require-prior-idle-ms = <150>;
         };
 
+        // U(6)+I(7) でダブルクリック。J+K は「かな」で埋まっているため I 起点側に新設。
+        ui_as_dblclick {
+            bindings = <&double_click>;
+            key-positions = <6 7>;
+            timeout-ms = <25>;
+            require-prior-idle-ms = <150>;
+        };
+
         uo_as_lbrac {
             bindings = <&kp JP_LBRACKET>;
             key-positions = <6 8>;
@@ -215,6 +223,19 @@
             #binding-cells = <0>;
             bindings = <&kp ESCAPE &kp JP_EISU>;
             label = "ESC_EISU";
+        };
+
+        // 左クリック2連打。press(25ms)→50ms→press(25ms) で押下間隔 75ms・全体 100ms。
+        // 人間のダブルクリック(60〜150ms)相当に寄せてある。速すぎると押下保持が
+        // BLE の connection interval と競り、リモートデスクトップ等でクリックを
+        // 取りこぼす。遅すぎると OS のダブルクリック判定(既定 500ms)を外す。
+        double_click: double_click {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&mkp MB1 &mkp MB1>;
+            label = "DOUBLE_CLICK";
+            wait-ms = <50>;
+            tap-ms = <25>;
         };
 
         toggle_mute: toggle_mute {
